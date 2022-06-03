@@ -28,9 +28,9 @@ int[,] MultipleArray(int[,] array1, int[,] array2)  ///метод перемно
     }
     else
         {
-            Console.WriteLine("Матрицы не одинакового размера");
+            Console.WriteLine("Матрицы не одинакового размера, новой матрице присвоены значения первой матрицы");
             Console.WriteLine();
-            return null;
+            return array1;
         }
 }
 
