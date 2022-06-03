@@ -16,7 +16,7 @@ int[,] MultipleArray(int[,] array1, int[,] array2)  ///метод перемно
 {
     if (array1.GetLength(0) == array2.GetLength(0) && array1.GetLength(1) == array2.GetLength(1))
     {
-        int[,] multiplArray = new int[array1.GetLength(0),array2.GetLength(1)];
+        int[,] multiplArray = new int[array1.GetLength(0),array1.GetLength(1)];
         for (int i = 0; i < multiplArray.GetLength(0); i++)
         {
             for (int j = 0; j < multiplArray.GetLength(1); j++)
