@@ -29,35 +29,13 @@ int[,] DeleteRowColumn(int[,] array)  ///метод удаления
     int[,] arrDel = new int[array.GetLength(0) - 1, array.GetLength(1) - 1]; //инициализируем новый массив на 1 меньше оригинала
     for (int i = 0; i < array.GetLength(0); i++)  //заполняем четвертями, выколотой границей будет точка minI, minJ
     {
-        if (i < minI)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            for (int j = 0; j < array.GetLength(1); j++)
-            {
-                if (j < minJ)
-                {
-                    arrDel[i, j] = array[i, j];
-                }
-                if (j > minJ)
-                {
-                    arrDel[i, j - 1] = array[i, j];
-                }
-            }
+            if (i < minI && j < minJ) arrDel[i, j] = array[i, j];
+            if (i < minI && j > minJ) arrDel[i, j - 1] = array[i, j];
+            if (i > minI && j < minJ) arrDel[i - 1, j] = array[i, j];
+            if (i > minI && j > minJ) arrDel[i - 1, j - 1] = array[i, j];
         }
-        if (i > minI)
-        {
-            for (int j = 0; j < array.GetLength(1); j++)
-            {
-                if (j < minJ)
-                {
-                    arrDel[i - 1, j] = array[i, j];
-                }
-                if (j > minJ)
-                {
-                    arrDel[i - 1, j - 1] = array[i, j];
-                }
-            }
-        }
-
     }
     return arrDel;
 }
