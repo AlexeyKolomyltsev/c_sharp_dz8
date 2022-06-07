@@ -12,26 +12,33 @@ void PrintArray(int[,] arrayforprint)   ///метод печати массив�
     Console.WriteLine();
 }
 
-int[,] MultipleArray(int[,] array1, int[,] array2)  ///метод перемножения
+int FMultIJ(int[,] array1, int[,] array2, int iO, int jO) ///метод возвращает значение элемента матрицы перемножения
 {
-    if (array1.GetLength(0) == array2.GetLength(0) && array1.GetLength(1) == array2.GetLength(1))
+    int result = 0;
+    for (int i = 0; i < array1.GetLength(1); i++)
     {
-        int[,] multiplArray = new int[array1.GetLength(0),array1.GetLength(1)];
+        result += array1[iO, i] * array2[i, jO];
+    }
+    return result;
+}
+
+
+int[,] MultipleArray(int[,] array1, int[,] array2)  ///метод заполнения матрицы перемножения
+{
+    int[,] multiplArray = new int[array1.GetLength(0), array2.GetLength(1)];
+    if (array1.GetLength(1) == array2.GetLength(0))
+    {
         for (int i = 0; i < multiplArray.GetLength(0); i++)
         {
+
             for (int j = 0; j < multiplArray.GetLength(1); j++)
             {
-                multiplArray[i,j] = array1[i,j] * array2[i,j];
+                multiplArray[i, j] = FMultIJ(array1, array2, i, j);
             }
         }
-        return multiplArray;
     }
-    else
-        {
-            Console.WriteLine("Матрицы не одинакового размера, новой матрице присвоены значения первой матрицы");
-            Console.WriteLine();
-            return array1;
-        }
+    else Console.WriteLine("Количество столбцов первой матрицы должно совпадать с количеством строк второй матрицы");
+    return multiplArray;
 }
 
 Console.Write("Введите количество строк первой матрицы = ");
